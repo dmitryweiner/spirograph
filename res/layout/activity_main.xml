@@ -16,7 +16,7 @@
         android:background="#FF5500"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="20pt">
 
         <TextView
             android:layout_width="15pt"
@@ -33,11 +33,12 @@
 
         <SeekBar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:id="@+id/sbR"
-            android:max="90"
-            android:progress="10"
+            android:max="87"
+            android:progress="100"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             />
 
     </LinearLayout>
@@ -46,7 +47,7 @@
         android:background="#55FF00"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="20pt">
 
         <TextView
             android:layout_width="15pt"
@@ -64,10 +65,11 @@
 
         <SeekBar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:id="@+id/sbr"
-            android:max="90"
-            android:progress="30"
+            android:max="100"
+            android:progress="36"
+            android:gravity="center_vertical"
             android:layout_weight="1"/>
 
     </LinearLayout>
@@ -76,7 +78,7 @@
         android:background="#0055FF"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="20pt">
 
         <TextView
             android:layout_width="15pt"
@@ -95,20 +97,13 @@
 
         <SeekBar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:id="@+id/sbh"
-            android:max="90"
-            android:progress="5"
+            android:max="100"
+            android:progress="62"
+            android:gravity="center_vertical"
             android:layout_weight="1"/>
 
     </LinearLayout>
-
-    <Button
-        android:background="#FFFFFF"
-        android:textColor="#000000"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Generate!"
-        android:id="@+id/button" />
 
 </LinearLayout>

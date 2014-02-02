@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000"
+    android:layout_weight="1">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:background="#FF5500"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="15pt"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="R = "
+            />
+        <TextView
+            android:layout_width="15pt"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text=""
+            android:id="@+id/tvR"/>
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sbR"
+            android:max="90"
+            android:progress="10"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#55FF00"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="15pt"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="r = "
+            />
+
+        <TextView
+            android:layout_width="15pt"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text=""
+            android:id="@+id/tvr"/>
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sbr"
+            android:max="90"
+            android:progress="30"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#0055FF"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="15pt"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="h = "
+            />
+
+        <TextView
+            android:layout_width="15pt"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text=""
+            android:id="@+id/tvh"
+            />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sbh"
+            android:max="90"
+            android:progress="5"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <Button
+        android:background="#FFFFFF"
+        android:textColor="#000000"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Generate!"
+        android:id="@+id/button" />
+
+</LinearLayout>

@@ -111,8 +111,8 @@ public class MainActivity extends ActionBarActivity
                         }
                     }
                     float minDimension = Math.min(bmp.getWidth(), bmp.getHeight());
-                    float i = bmp.getWidth()/2 + (minDimension / 2 / (Math.mod(Rbig - r) + h)) * x;
-                    float j = bmp.getWidth()/2 - (minDimension / 2 / (Math.mod(Rbig - r) + h)) * y;
+                    float i = bmp.getWidth()/2 + (minDimension / 2 / (Math.abs(Rbig - r) + h)) * x * 0.9f;
+                    float j = bmp.getHeight()/2 - (minDimension / 2 / (Math.abs(Rbig - r) + h)) * y * 0.9f;
                     c.drawRect(i, j, i + 1, j + 1, paint);
                     phi += 0.05;
                 }

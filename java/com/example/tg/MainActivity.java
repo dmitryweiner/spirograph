@@ -5,17 +5,20 @@ import android.os.Bundle;
 import android.graphics.*;
 import android.widget.*;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.util.*;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.Window;
 
 public class MainActivity extends ActionBarActivity
         implements OnSeekBarChangeListener{
     Bitmap bmp = null;
     ImageView iv = null;
-    private boolean isCalculating = false;
+    private static volatile boolean isCalculating = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         iv = (ImageView) findViewById(R.id.imageView);
@@ -29,6 +32,31 @@ public class MainActivity extends ActionBarActivity
         updateTextValues(sbr);
         updateTextValues(sbR);
         updateTextValues(sbh);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        /*
+            switch (item.getItemId()) {
+            case R.id.new_game:
+                newGame();
+                return true;
+            case R.id.help:
+                showHelp();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+            }
+         */
+        Toast.makeText(MainActivity.this, "Sorry, not implemented yet", Toast.LENGTH_SHORT).show();
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

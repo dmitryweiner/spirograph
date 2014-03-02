@@ -33,13 +33,12 @@
 
         <SeekBar
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/sbR"
             android:max="100"
             android:progress="87"
             android:layout_weight="1"
-            android:gravity="center_vertical"
-            />
+            android:layout_gravity="center" />
 
     </LinearLayout>
 
@@ -65,11 +64,11 @@
 
         <SeekBar
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/sbr"
             android:max="100"
             android:progress="36"
-            android:gravity="center_vertical"
+            android:layout_gravity="center"
             android:layout_weight="1"/>
 
     </LinearLayout>
@@ -97,11 +96,11 @@
 
         <SeekBar
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/sbh"
             android:max="100"
             android:progress="62"
-            android:gravity="center_vertical"
+            android:layout_gravity="center"
             android:layout_weight="1"/>
 
     </LinearLayout>

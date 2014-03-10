@@ -2,6 +2,10 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/menu_random"
+        android:title="Set random parameters">
+    </item>
+    <item
         android:id="@+id/menu_dt"
         android:title="Change dt">
     </item>
@@ -12,9 +16,5 @@
     <item
         android:id="@+id/menu_speed"
         android:title="Change speed">
-    </item>
-    <item
-        android:id="@+id/menu_random"
-        android:title="Set random parameters">
     </item>
 </menu>

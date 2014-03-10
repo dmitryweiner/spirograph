@@ -1,5 +1,6 @@
 package com.example.tg;
 
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.graphics.*;
@@ -8,12 +9,16 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.util.Log;
+
+import java.util.Random;
 
 public class MainActivity extends ActionBarActivity
         implements OnSeekBarChangeListener{
     Bitmap bmp = null;
     ImageView iv = null;
-    private static volatile boolean isCalculating = false;
+    static String TAG = "spirograph";
+    private volatile boolean isCalculating = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,7 @@ public class MainActivity extends ActionBarActivity
         updateTextValues(sbr);
         updateTextValues(sbR);
         updateTextValues(sbh);
+        Log.i(TAG, "App started");
     }
 
     @Override
@@ -42,21 +48,24 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        SeekBar sbr = (SeekBar) findViewById(R.id.sbr);
+        SeekBar sbR = (SeekBar) findViewById(R.id.sbR);
+        SeekBar sbh = (SeekBar) findViewById(R.id.sbh);
+        Random r = new Random();
         // Handle item selection
-        /*
-            switch (item.getItemId()) {
-            case R.id.new_game:
-                newGame();
-                return true;
-            case R.id.help:
-                showHelp();
+        switch (item.getItemId()) {
+            case R.id.menu_random:
+                sbr.setProgress(r.nextInt(100));
+                sbR.setProgress(r.nextInt(100));
+                sbh.setProgress(r.nextInt(100));
+                updateTextValues(sbr);
+                updateTextValues(sbR);
+                updateTextValues(sbh);
                 return true;
             default:
+                Toast.makeText(MainActivity.this, "Sorry, not implemented yet", Toast.LENGTH_SHORT).show();
                 return super.onOptionsItemSelected(item);
-            }
-         */
-        Toast.makeText(MainActivity.this, "Sorry, not implemented yet", Toast.LENGTH_SHORT).show();
-        return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -66,17 +75,16 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-        if (bmp != null) {
-            bmp.eraseColor(Color.rgb(0, 0, 0));
-            iv.setImageBitmap(bmp);
-            iv.invalidate();
-        }
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+        Log.i(TAG, "onStopTrackingTouch " + seekBar.getProgress());
         if (!isCalculating) {
-            new Thread(drawImage).start();
+            Handler handler = new Handler();
+            handler.post(drawImage);
+        } else {
+            Log.i(TAG, "Thread is already started");
         }
     }
 
@@ -103,7 +111,8 @@ public class MainActivity extends ActionBarActivity
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         bmp = Bitmap.createBitmap( iv.getWidth(), iv.getHeight(), Bitmap.Config.ARGB_8888);
-        new Thread(drawImage).start();
+        Handler handler = new Handler();
+        handler.post(drawImage);
     }
 
     Runnable drawImage = new Runnable() {
@@ -112,8 +121,11 @@ public class MainActivity extends ActionBarActivity
 
         @Override
         public void run() {
+            Log.i(TAG, "Thread started");
+            isCalculating = true;
             if (bmp != null) {
-                isCalculating = true;
+
+                bmp.eraseColor(Color.rgb(0, 0, 0));
                 c = new Canvas(bmp);
 
                 Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -147,13 +159,16 @@ public class MainActivity extends ActionBarActivity
 
                 MainActivity.this.runOnUiThread(new Runnable() {
                     public void run() {
+                        Log.i(TAG, "runOnUiThread begin");
                         ImageView iv = (ImageView) findViewById(R.id.imageView);
                         iv.setImageBitmap(bmp);
                         iv.invalidate();
-                        isCalculating = false;
+                        Log.i(TAG, "runOnUiThread end");
                     }
                 });
             }
+            isCalculating = false;
+            Log.i(TAG, "Thread finished");
         }
     };
 
